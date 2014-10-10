@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="lwjgl" />
+  <library name="PyPy 2.0.2 (/usr/local/bin/pypy) interpreter library" />
+  <library name="Python 2.7.3 (/Library/Frameworks/Python.framework/Versions/2.7/bin/python) interpreter library">
+    <archive path="/Library/Python/2.7/site-packages/pip-1.2.1-py2.7.egg" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-darwin" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-mac" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-mac/lib-scriptpackages" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-tk" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-dynload" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages" />
+    <archive path="/Library/Python/2.7/site-packages" />
+    <archive path="/Library/Python/2.7/site-packages/PIL" />
+  </library>
+  <library name="Python 2.7.3 (/usr/local/bin/python) interpreter library">
+    <archive path="/Library/Python/2.7/site-packages/pip-1.2.1-py2.7.egg" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-darwin" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-mac" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-mac/lib-scriptpackages" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-tk" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-dynload" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages" />
+    <archive path="/Library/Python/2.7/site-packages" />
+    <archive path="/Library/Python/2.7/site-packages/PIL" />
+  </library>
+  <library name="Python 2.7.3 (/usr/local/bin/python2.7) interpreter library">
+    <archive path="/Library/Python/2.7/site-packages/pip-1.2.1-py2.7.egg" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-darwin" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-mac" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-mac/lib-scriptpackages" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-tk" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-dynload" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages" />
+    <archive path="/Library/Python/2.7/site-packages" />
+    <archive path="/Library/Python/2.7/site-packages/PIL" />
+  </library>
+  <library name="Python 3.3.0 (/usr/local/bin/python3.3m) interpreter library">
+    <archive path="/Library/Frameworks/Python.framework/Versions/3.3/lib/python3.3" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/3.3/lib/python3.3/plat-darwin" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/3.3/lib/python3.3/lib-dynload" />
+    <archive path="/Library/Frameworks/Python.framework/Versions/3.3/lib/python3.3/site-packages" />
+  </library>
+  <library name="Scala" />
+  <library name="scala-compiler">
+    <archive path="/Users/nishadmathur/Documents/code/Runtimes/scala/scala-2.10.0-RC2/lib/scala-compiler.jar" />
+    <archive path="/Users/nishadmathur/Documents/code/Runtimes/scala/scala-2.10.0-RC2/lib/scala-library.jar" />
+    <archive path="/Users/nishadmathur/Documents/code/Runtimes/scala/scala-2.10.0-RC2/lib/scala-reflect.jar" />
+  </library>
+  <library name="scala-library">
+    <archive path="/Users/nishadmathur/Documents/code/Runtimes/scala/scala-2.10.0-RC2/lib/scala-library.jar" />
+    <archive path="/Users/nishadmathur/Documents/code/Runtimes/scala/scala-2.10.0-RC2/lib/scala-swing.jar" />
+    <archive path="/Users/nishadmathur/Documents/code/Runtimes/scala/scala-2.10.0-RC2/lib/scala-actors.jar" />
+  </library>
+  <library name="slick" />
+</eclipse-userlibraries>
+
