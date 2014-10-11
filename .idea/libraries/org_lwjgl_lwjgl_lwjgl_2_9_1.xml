@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="org.lwjgl.lwjgl:lwjgl:2.9.1" type="repository">
+    <properties maven-id="org.lwjgl.lwjgl:lwjgl:2.9.1" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/lwjgl-2.9.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jinput-2.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jutils-1.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/lwjgl-2.9.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/lwjgl-2.9.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
