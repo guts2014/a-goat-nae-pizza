@@ -15,7 +15,8 @@ public class Map {
     List<List<Tile>> floor;
     List<List<List<Tile>>> objects;
 
-    public Map(final int width, final int height, Tile defaultFloor, Tile defaultWall) {
+
+	public Map(final int width, final int height, Tile defaultFloor, Tile defaultWall) {
         this.floor = new ArrayList<>(width);
         this.objects = new ArrayList<>(width);
 
@@ -58,4 +59,9 @@ public class Map {
             }
         }
     }
+    
+	public List<List<List<Tile>>> getObjects() {
+		return objects;
+	}
+    
 }

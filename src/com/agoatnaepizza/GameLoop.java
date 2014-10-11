@@ -5,12 +5,15 @@ import com.agoatnaepizza.Game.Map;
 import com.agoatnaepizza.Game.Objects.Tile;
 import com.agoatnaepizza.Game.Tiles.Floor;
 import com.agoatnaepizza.Game.Tiles.Wall;
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+
+import java.util.List;
 
 /**
  * User: nishad
@@ -42,16 +45,17 @@ public class GameLoop extends BasicGameState {
         Tile wall = new Wall();
 
         map = new Map(10, 10, floor, wall);
+        
     }
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
     	Input input = gameContainer.getInput();
-    	
-    	if (input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON)) {
+    	int WheelDelta = Mouse.getDWheel();
+    	if (WheelDelta > 0) {
     		if (!toggled) scale /= 1.2;
     		toggled = true;
-    	} else if (input.isMouseButtonDown(Input.MOUSE_RIGHT_BUTTON)) {
+    	} else if (WheelDelta < 0) {
     		if (!toggled) scale *= 1.2;
     		toggled = true;
     	} else {
@@ -69,6 +73,21 @@ public class GameLoop extends BasicGameState {
     	
     	if (input.isKeyDown(Input.KEY_UP)) 
     		keyDownY -= 1;
+    
+    	if (input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON)) {
+    		int x = (int) Math.floor((input.getMouseX() / scale - keyDownX) / Tile.getSize());
+    		int y = (int) Math.floor((input.getMouseY() / scale - keyDownY) / Tile.getSize());
+    		map.getObjects().get(x).get(y).add(new Wall());
+    	}
+    	
+    	if (input.isMouseButtonDown(Input.MOUSE_RIGHT_BUTTON)) {
+    		int x = (int) Math.floor((input.getMouseX() / scale - keyDownX) / Tile.getSize());
+    		int y = (int) Math.floor((input.getMouseY() / scale - keyDownY) / Tile.getSize());
+    		
+    		List<Tile> objects = map.getObjects().get(x).get(y);
+    		for (Tile t : objects)
+    			objects.remove(t);
+    	}
     	
     }
 
