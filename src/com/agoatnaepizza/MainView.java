@@ -39,6 +39,8 @@ public class MainView extends JFrame {
         JPanel game = new JPanel();
         JPanel UI = new UIPanel(model);
 
+        this.setLayout(new FlowLayout());
+
         setSize(1000, 600);
         game.setSize(getWidth() - 200, getHeight());
         game.setFocusable(true);

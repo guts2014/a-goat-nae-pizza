@@ -1,6 +1,5 @@
 package com.agoatnaepizza;
 
-import com.agoatnaepizza.Game.Buildable;
 import com.agoatnaepizza.Game.InteractionModel;
 
 import javax.swing.*;
@@ -12,7 +11,7 @@ import javax.swing.*;
  */
 public class UIPanel extends JPanel {
 
-    JComboBox<Buildable> buildables;
+    JComboBox<Object> buildables;
     InteractionModel model;
     /**
      * Creates a new <code>JPanel</code> with a double buffer
@@ -20,7 +19,10 @@ public class UIPanel extends JPanel {
      * @param model
      */
     public UIPanel(InteractionModel model) {
-        buildables = new JComboBox<>(Buildable.values());
+        buildables = new JComboBox<>();
         this.model = model;
+
+        this.add(buildables);
     }
+
 }

@@ -9,7 +9,6 @@ import com.agoatnaepizza.Game.Objects.Tile;
  * Time: 11:12
  */
 public class Floor extends Tile{
-
     public Floor() {
         super(ImageOrDefault.load("Resources/Tile/floor50.jpg"), false);
     }
