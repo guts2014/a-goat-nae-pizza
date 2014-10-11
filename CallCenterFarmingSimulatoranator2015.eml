@@ -3,8 +3,27 @@
 	<output-test url="file://$MODULE_DIR$/out/test/CallCenterFarmingSimulatoranator2015"/>
 	<exclude-output/>
 	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="jinput-2.0.5.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jinput-2.0.5.jar!/"/>
+	</lib>
+	<lib name="jutils-1.0.0.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jutils-1.0.0.jar!/"/>
+	</lib>
+	<lib name="lwjgl-2.9.1-javadoc.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/lwjgl-2.9.1-javadoc.jar!/"/>
+	</lib>
+	<lib name="lwjgl-2.9.1-sources.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/lwjgl-2.9.1-sources.jar!/"/>
+	</lib>
+	<lib name="lwjgl-2.9.1.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/lwjgl-2.9.1.jar!/"/>
+	</lib>
+	<lib name="slick.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/slick.jar!/"/>
+	</lib>
 	<levels>
 		<level name="org.lwjgl.lwjgl:lwjgl:2.9.1" value="project"/>
 		<level name="slick" value="project"/>
+		<level name="TWL" value="project"/>
 	</levels>
 </component>

@@ -1,8 +1,9 @@
 package com.agoatnaepizza.Game.Objects;
 
-import org.newdawn.slick.geom.Vector2f;
-
 import com.agoatnaepizza.Game.Map;
+import com.agoatnaepizza.Game.Tasks.Customer;
+import com.agoatnaepizza.Game.Tasks.TaskQueue;
+import org.newdawn.slick.geom.Vector2f;
 
 /**
  * User: nishad
@@ -15,8 +16,10 @@ public class Staff {
     private Integer Salary = 20;
     private Skills skill = new Skills();
     private Vector2f position;
+    private int experience = 1; 
     private boolean available; 
-    private TaskProvider currentTask; 
+    private Customer currentTask;
+
 
     class Skills {
         Integer calls = 5;
@@ -32,14 +35,17 @@ public class Staff {
 
     //provisional 
     public void tick(Map map) {
-    	if(available){ 
-    		currentTask = new TaskProvider(null, null) //change 
-    		int persentage = TaskProvider.taskQueue.deque().getPersentage();  //change 
-    		while(persentage < 100){
-    			if(persentage%10 == 0){ 
-    				if (Customer is angry){ 
+    	if(available){
+    		currentTask = TaskQueue.getRandomCustomer(); //change
+    		int percentage = currentTask.getPercentageComplete();  //change
+
+    		while(percentage < 100){
+    			if(percentage % 10 == 0){
+    				if (currentTask.isAngry()){
     					
     				}
+    				//depending on type of task(phone,email,social) 
+    				percentage += 100/15;
     			}
     		}
     		
