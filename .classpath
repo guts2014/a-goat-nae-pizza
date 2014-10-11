@@ -16,5 +16,8 @@
 	<classpathentry kind="lib" path="lib/slick.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/TWL"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/designgridlayout-1.11"/>
+	<classpathentry kind="lib" path="lib/designgridlayout-1.11-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/designgridlayout-1.11-sources.jar"/>
+	<classpathentry kind="lib" path="lib/designgridlayout-1.11.jar"/>
 	<classpathentry kind="output" path="out/production/CallCenterFarmingSimulatoranator2015"/>
 </classpath>
