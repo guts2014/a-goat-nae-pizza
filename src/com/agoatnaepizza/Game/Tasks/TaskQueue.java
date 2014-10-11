@@ -1,7 +1,6 @@
 package com.agoatnaepizza.Game.Tasks;
 
 import java.awt.Image;
-import java.util.ArrayDeque;
 import java.util.Random;
 
 import com.agoatnaepizza.Game.Tasks.Customer.CustomerType;
@@ -12,9 +11,9 @@ import com.agoatnaepizza.Game.Tasks.Customer.CustomerType;
  * Time: 23:53
  */
 public class TaskQueue {	
-	ArrayDeque emailQue;
-	ArrayDeque callQue;
-	ArrayDeque socialQue;
+	ArrayQueue emailQue;
+	ArrayQueue callQue;
+	ArrayQueue socialQue;
 	
 	int calltime=15;
 	int emailtime=10;
@@ -23,9 +22,9 @@ public class TaskQueue {
 		Customer newCustomer=getRandomCustomer();
 		//get 1000 different customers
 		for(int i=0;i<1000;i++){
-			if(newCustomer.getType()==CustomerType.call) callQue.add(newCustomer);
-			else if(newCustomer.getType()==CustomerType.email) callQue.add(newCustomer);
-			else if(newCustomer.getType()==CustomerType.soc) callQue.add(newCustomer);
+			if(newCustomer.getType()==CustomerType.call) callQue.enqueue(newCustomer);
+			else if(newCustomer.getType()==CustomerType.email) emailQue.enqueue(newCustomer);
+			else if(newCustomer.getType()==CustomerType.soc) socialQue.enqueue(newCustomer);
 			newCustomer=getRandomCustomer();
 		}
 	}
