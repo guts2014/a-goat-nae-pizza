@@ -26,4 +26,9 @@ public class Computer extends TaskProvider {
     public Customer getTask() {
         return taskQueue.getTask();
     }
+
+    @Override
+    public boolean hasTask() {
+        return taskQueue.hasTask();
+    }
 }

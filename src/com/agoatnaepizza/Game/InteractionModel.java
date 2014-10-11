@@ -9,6 +9,7 @@ import com.agoatnaepizza.Game.Objects.Tile;
  */
 public class InteractionModel {
     Tile selectedBuildable;
+    Boolean placeStaff = false;
 
     public Tile getSelectedBuildable() {
         return selectedBuildable;
@@ -18,4 +19,11 @@ public class InteractionModel {
         this.selectedBuildable = buildable;
     }
 
+    public Boolean getPlaceStaff() {
+        return placeStaff;
+    }
+
+    public void setPlaceStaff(Boolean placeStaff) {
+        this.placeStaff = placeStaff;
+    }
 }

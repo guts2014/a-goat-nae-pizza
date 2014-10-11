@@ -2,7 +2,6 @@ package com.agoatnaepizza.Game.Objects;
 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 
 /**
  * User: nishad
@@ -26,11 +25,6 @@ public class Tile {
     
     public Image getTile() {
 		return tile;
-	}
-    
-	public Image getTransperantTile() throws SlickException {
-		// TODO Auto-generated method stub
-		return new Image(tile.getName() + "-transperant");
 	}
 
     public static int getSize() {

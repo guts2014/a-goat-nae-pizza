@@ -4,13 +4,11 @@ import com.agoatnaepizza.Game.Buildable;
 import com.agoatnaepizza.Game.InteractionModel;
 import com.agoatnaepizza.Game.Map;
 import com.agoatnaepizza.Game.Objects.Tile;
+import com.agoatnaepizza.Game.Tasks.TaskQueue;
 import com.agoatnaepizza.Game.Tiles.Floor;
 import com.agoatnaepizza.Game.Tiles.Wall;
 import org.lwjgl.input.Mouse;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -106,8 +104,8 @@ public class GameLoop extends BasicGameState {
     
     	graphics.scale(scale, scale);
         map.render(graphics);
-        graphics.drawImage(model.getSelectedBuildable().getTransperantTile(), mouseX*Tile.getSize(), mouseY*Tile.getSize());
-    	graphics.drawString("", 10, 100);
+        graphics.drawImage(model.getSelectedBuildable().getTile(), mouseX * Tile.getSize(), mouseY * Tile.getSize(), new Color(1.0f, 1.0f, 1.0f, 0.5f));
+        graphics.drawString("", 10, 100);
     	
     	
     }

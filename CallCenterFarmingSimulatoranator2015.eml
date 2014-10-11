@@ -25,5 +25,6 @@
 		<level name="org.lwjgl.lwjgl:lwjgl:2.9.1" value="project"/>
 		<level name="slick" value="project"/>
 		<level name="TWL" value="project"/>
+		<level name="designgridlayout-1.11" value="project"/>
 	</levels>
 </component>
