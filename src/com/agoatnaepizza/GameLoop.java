@@ -4,7 +4,6 @@ import com.agoatnaepizza.Game.Buildable;
 import com.agoatnaepizza.Game.InteractionModel;
 import com.agoatnaepizza.Game.Map;
 import com.agoatnaepizza.Game.Objects.Tile;
-import com.agoatnaepizza.Game.Tasks.TaskQueue;
 import com.agoatnaepizza.Game.Tiles.Floor;
 import com.agoatnaepizza.Game.Tiles.Wall;
 import org.lwjgl.input.Mouse;
@@ -29,6 +28,8 @@ public class GameLoop extends BasicGameState {
 	private int keyDownX;
 	private int keyDownY;
     InteractionModel model;
+	private int mouseX;
+	private int mouseY;
 
     TaskQueue PhoneQueue = new TaskQueue();
     TaskQueue emailQueue = new TaskQueue();
@@ -83,23 +84,20 @@ public class GameLoop extends BasicGameState {
     	if (input.isKeyDown(Input.KEY_UP)) 
     		keyDownY -= 1;
     
+    	int x = (int) Math.floor(Math.floor((input.getMouseX() / scale - keyDownX)) / Tile.getSize());
+		int y = (int) Math.floor(Math.floor((input.getMouseY() / scale - keyDownY)) / Tile.getSize());
     	if (input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON)) {
-    		int x = (int) Math.floor((input.getMouseX() / scale - keyDownX) / Tile.getSize());
-    		int y = (int) Math.floor((input.getMouseY() / scale - keyDownY) / Tile.getSize());
     		map.getObjects().get(x).get(y).add(model.getSelectedBuildable());
     	}
     	
     	if (input.isMouseButtonDown(Input.MOUSE_RIGHT_BUTTON)) {
-    		int x = (int) Math.floor((input.getMouseX() / scale - keyDownX) / Tile.getSize());
-    		int y = (int) Math.floor((input.getMouseY() / scale - keyDownY) / Tile.getSize());
-    		
     		List<Tile> objects = map.getObjects().get(x).get(y);
     		for (Tile t : objects)
     			objects.remove(t);
     	}
-
-
-
+    	
+    	mouseX = x;
+    	mouseY = y;
     }
 
     @Override
@@ -108,6 +106,7 @@ public class GameLoop extends BasicGameState {
     
     	graphics.scale(scale, scale);
         map.render(graphics);
+        graphics.drawImage(model.getSelectedBuildable().getTransperantTile(), mouseX*Tile.getSize(), mouseY*Tile.getSize());
     	graphics.drawString("", 10, 100);
     	
     	
