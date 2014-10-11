@@ -1,5 +1,6 @@
 package com.agoatnaepizza.Game;
 
+import com.agoatnaepizza.Game.Objects.Staff;
 import com.agoatnaepizza.Game.Objects.Tile;
 import com.agoatnaepizza.IPredicate;
 import org.newdawn.slick.Graphics;
@@ -21,23 +22,27 @@ import static java.lang.Math.sqrt;
 public class Map implements TileBasedMap {
     List<List<Tile>> floor;
     List<List<List<Tile>>> objects;
-
+    List<List<Staff>> staff;
 
 	public Map(final int width, final int height, Tile defaultFloor, Tile defaultWall) {
         this.floor = new ArrayList<>(width);
         this.objects = new ArrayList<>(width);
+        this.staff = new ArrayList<>(width);
 
         for (int i = 0; i < width; i++) {
             List<Tile> floor = new ArrayList<>(height);
             List<List<Tile>> objects = new ArrayList<>(height);
+            List<Staff> staff = new ArrayList<>(height);
 
             for (int j = 0; j < height; j++) {
                 floor.add(defaultFloor);
                 objects.add(new ArrayList<Tile>(1));
+                staff.add(null);
             }
 
             this.floor.add(floor);
             this.objects.add(objects);
+            this.staff.add(staff);
         }
 
         for (int i = 0; i < width; i++) {
@@ -79,6 +84,10 @@ public class Map implements TileBasedMap {
                 for (Tile tile: objects.get(i).get(j)) {
                     graphics.drawImage(tile.getTile(), i*size, j*size);
                 }
+
+                if (staff.get(i).get(j) != null) {
+                    graphics.drawImage(staff.get(i).get(j).getTile().getTile(), i * size, j * size);
+                }
             }
         }
     }
@@ -110,5 +119,13 @@ public class Map implements TileBasedMap {
     @Override
     public float getCost(PathFindingContext pathFindingContext, int i, int i2) {
         return (float) sqrt(i * i + i2 * i2);
+    }
+
+    public Staff getStaff(int x, int y) {
+        return staff.get(x).get(y);
+    }
+
+    public void setStaff(int x, int y, Staff oneStaff) {
+        this.staff.get(x).set(y, oneStaff);
     }
 }

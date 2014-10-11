@@ -3,6 +3,7 @@ package com.agoatnaepizza.Game.Objects;
 import com.agoatnaepizza.Game.Company;
 import com.agoatnaepizza.Game.Map;
 import com.agoatnaepizza.Game.Tasks.Customer;
+import com.agoatnaepizza.Game.Tiles.StaffTile;
 import org.newdawn.slick.geom.Vector2f;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class Staff {
     private States state;
     private Customer currentTask;
     private State condition;
+    private Tile tile;
 
     Random r = new Random();
 
@@ -41,6 +43,7 @@ public class Staff {
         this.position = position;
         this.state = States.LookingForWork;
         this.condition = new State();
+        this.tile = new StaffTile();
     }
 
     //provisional 
@@ -98,5 +101,17 @@ public class Staff {
 
     public enum States {
         handlingTask, Moving, Sitting, Idle, LookingForWork
+    }
+
+    public Tile getTile() {
+        return tile;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public States getState() {
+        return state;
     }
 }

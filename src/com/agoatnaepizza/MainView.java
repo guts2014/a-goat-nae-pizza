@@ -48,7 +48,7 @@ public class MainView extends JFrame {
         game.setIgnoreRepaint(true);
         game.setVisible(true);
 
-        UI.setSize(200, 800);
+        UI.setSize(getWidth() - game.getWidth(), getHeight());
 
         setVisible(true);
 
@@ -67,6 +67,9 @@ public class MainView extends JFrame {
             add(UI);
 
             UI.populate();
+
+            revalidate();
+            repaint();
 
             gc.start();
         } catch (SlickException e) {

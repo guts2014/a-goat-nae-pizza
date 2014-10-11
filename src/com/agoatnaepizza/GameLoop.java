@@ -3,12 +3,14 @@ package com.agoatnaepizza;
 import com.agoatnaepizza.Game.Buildable;
 import com.agoatnaepizza.Game.InteractionModel;
 import com.agoatnaepizza.Game.Map;
+import com.agoatnaepizza.Game.Objects.Staff;
 import com.agoatnaepizza.Game.Objects.Tile;
 import com.agoatnaepizza.Game.Tasks.TaskQueue;
 import com.agoatnaepizza.Game.Tiles.Floor;
 import com.agoatnaepizza.Game.Tiles.Wall;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
+import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -85,13 +87,22 @@ public class GameLoop extends BasicGameState {
     	int x = (int) Math.floor(Math.floor((input.getMouseX() / scale - keyDownX)) / Tile.getSize());
 		int y = (int) Math.floor(Math.floor((input.getMouseY() / scale - keyDownY)) / Tile.getSize());
     	if (input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON)) {
-    		map.getObjects().get(x).get(y).add(model.getSelectedBuildable());
+            if (model.getPlaceStaff()) {
+                map.setStaff(x, y, new Staff("BOB", new Vector2f(x, y)));
+            } else {
+                map.getObjects().get(x).get(y).add(model.getSelectedBuildable());
+            }
     	}
     	
     	if (input.isMouseButtonDown(Input.MOUSE_RIGHT_BUTTON)) {
-    		List<Tile> objects = map.getObjects().get(x).get(y);
-    		for (Tile t : objects)
-    			objects.remove(t);
+    		if (model.getPlaceStaff()) {
+                map.setStaff(x, y, null);
+            } else {
+                List<Tile> objects = map.getObjects().get(x).get(y);
+                for (Tile t : objects) {
+                    objects.remove(t);
+                }
+            }
     	}
     	
     	mouseX = x;
@@ -104,7 +115,10 @@ public class GameLoop extends BasicGameState {
     
     	graphics.scale(scale, scale);
         map.render(graphics);
-        graphics.drawImage(model.getSelectedBuildable().getTile(), mouseX * Tile.getSize(), mouseY * Tile.getSize(), new Color(1.0f, 1.0f, 1.0f, 0.5f));
+        graphics.drawImage(
+            model.getSelectedBuildable().getTile(), mouseX * Tile.getSize(), mouseY * Tile.getSize(),
+            new Color(1.0f, 1.0f, 1.0f, 0.5f)
+        );
         graphics.drawString("", 10, 100);
     	
     	
