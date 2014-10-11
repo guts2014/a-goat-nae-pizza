@@ -1,6 +1,6 @@
 package com.agoatnaepizza.Game.Objects;
 
-import java.awt.*;
+import org.newdawn.slick.Image;
 
 /**
  * User: nishad

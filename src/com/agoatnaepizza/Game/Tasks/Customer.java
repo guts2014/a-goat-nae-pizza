@@ -8,6 +8,9 @@ import java.awt.*;
  * Time: 23:06
  */
 public class Customer {
+
+    CustomerType type;
+
     boolean angry = false;
     int money = 5;
     int patience = 50;
@@ -15,16 +18,30 @@ public class Customer {
     int percentageComplete = 0;
     Image icon;
 
-    public Customer(boolean angry, int money, int patience, int percentageComplete, Image icon) {
+    boolean waiting;
+
+    enum CustomerType {
+        call, email, phone
+    }
+
+    public Customer(CustomerType type, boolean angry, int money, int patience, int percentageComplete, Image icon) {
+        this.type = type;
         this.angry = angry;
         this.money = money;
         this.patience = patience;
         this.percentageComplete = percentageComplete;
         this.icon = icon;
+        this.waiting = true;
+    }
+
+    public void answer() {
+        this.waiting = false;
     }
 
     public void tick() {
-        this.patience -= this.angry? 5 : 1;
+        if (!waiting) {
+            this.patience -= this.angry ? 5 : 1;
+        }
     }
 }
 

@@ -3,4 +3,8 @@
 	<output-test url="file://$MODULE_DIR$/out/test/CallCenterFarmingSimulatoranator2015"/>
 	<exclude-output/>
 	<contentEntry url="file://$MODULE_DIR$"/>
+	<levels>
+		<level name="org.lwjgl.lwjgl:lwjgl:2.9.1" value="project"/>
+		<level name="slick" value="project"/>
+	</levels>
 </component>
