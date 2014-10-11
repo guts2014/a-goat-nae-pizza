@@ -24,17 +24,18 @@ public class Customer {
         call, email, soc
     }
 
-    public Customer(CustomerType type, boolean angry, int money, int patience, int percentageComplete, Image icon) {
+    public Customer(CustomerType type, boolean angry, int money, int patience, Image icon) {
         this.type = type;
         this.angry = angry;
         this.money = money;
         this.patience = patience;
-        this.percentageComplete = percentageComplete;
+//        this.percentageComplete = percentageComplete;
         this.icon = icon;
         this.waiting = true;
     }
-
-    public void answer() {
+    
+    
+	public void answer() {
         this.waiting = false;
     }
 
@@ -43,6 +44,52 @@ public class Customer {
             this.patience -= this.angry ? 5 : 1;
         }
     }
+    
+    //GETTERS AND SETTERS	
+
+    public CustomerType getType() {
+		return type;
+	}
+
+	public void setType(CustomerType type) {
+		this.type = type;
+	}
+
+	public boolean isAngry() {
+		return angry;
+	}
+
+	public void setAngry(boolean angry) {
+		this.angry = angry;
+	}
+
+	public int getMoney() {
+		return money;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
+	}
+
+	public int getPatience() {
+		return patience;
+	}
+
+	public void setPatience(int patience) {
+		this.patience = patience;
+	}
+
+	public int getPercentageComplete() {
+		return percentageComplete;
+	}
+
+	public void setPercentageComplete(int percentageComplete) {
+		this.percentageComplete = percentageComplete;
+	}
+
+
+    
+    
 }
 
 
