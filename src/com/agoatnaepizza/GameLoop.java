@@ -2,6 +2,7 @@ package com.agoatnaepizza;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.agoatnaepizza.Game.Map;
 import com.agoatnaepizza.Game.Objects.Phone;
@@ -69,11 +70,21 @@ public class GameLoop extends BasicGameState {
     	if (input.isKeyDown(Input.KEY_UP)) 
     		keyDownY -= 1;
     
-    	if (input.isKeyDown(Input.KEY_W)) {
+    	if (input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON)) {
     		int x = (int) Math.floor((input.getMouseX() / scale - keyDownX) / Tile.getSize());
     		int y = (int) Math.floor((input.getMouseY() / scale - keyDownY) / Tile.getSize());
     		map.getObjects().get(x).get(y).add(new Wall());
     	}
+    	
+    	if (input.isMouseButtonDown(Input.MOUSE_RIGHT_BUTTON)) {
+    		int x = (int) Math.floor((input.getMouseX() / scale - keyDownX) / Tile.getSize());
+    		int y = (int) Math.floor((input.getMouseY() / scale - keyDownY) / Tile.getSize());
+    		
+    		List<Tile> objects = map.getObjects().get(x).get(y);
+    		for (Tile t : objects)
+    			objects.remove(t);
+    	}
+    	
     }
 
     @Override
