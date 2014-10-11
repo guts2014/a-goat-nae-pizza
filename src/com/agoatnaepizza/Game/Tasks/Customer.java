@@ -21,7 +21,7 @@ public class Customer {
     boolean waiting;
 
     enum CustomerType {
-        call, email, phone
+        call, email, soc
     }
 
     public Customer(CustomerType type, boolean angry, int money, int patience, int percentageComplete, Image icon) {
