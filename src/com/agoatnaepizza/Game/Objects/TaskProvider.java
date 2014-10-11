@@ -9,11 +9,12 @@ import java.awt.*;
  * Date: 10/10/14
  * Time: 23:52
  */
-public class TaskProvider extends Tile {
-    TaskQueue taskQueue;
+public class TaskProvider extends Tile { 
+	static TaskQueue taskQueue;
 
     public TaskProvider(org.newdawn.slick.Image tile, TaskQueue queue) {
         super(tile, false);
         this.taskQueue = queue;
     }
+   
 }
