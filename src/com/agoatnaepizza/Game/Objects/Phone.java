@@ -9,7 +9,7 @@ import com.agoatnaepizza.Game.ImageOrDefault;
  */
 public class Phone extends TaskProvider {
     public Phone() {
-        super(ImageOrDefault.load("Resources/phone.bmp")); //TODO Implement me!!
+        super(ImageOrDefault.load("Resources/Phone/phone50.png")); //TODO Implement me!!
     }
 
 

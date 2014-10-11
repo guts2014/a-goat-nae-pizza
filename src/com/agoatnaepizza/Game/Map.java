@@ -52,7 +52,7 @@ public class Map {
     	for (int i = 0; i < floor.size(); i++) {
             for (int j = 0; j < floor.get(i).size(); j++) {
                 graphics.drawImage(floor.get(i).get(j).getTile(), i*size, j*size);
-
+                
                 for (Tile tile: objects.get(i).get(j)) {
                     graphics.drawImage(tile.getTile(), i*size, j*size);
                 }

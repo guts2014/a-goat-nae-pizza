@@ -14,6 +14,6 @@ public class Chair extends Tile {
     }
 
     public Chair() {
-        super(ImageOrDefault.load("resources/chair.bmp"), false);
+        super(ImageOrDefault.load("resources/Chair/chair50.png"), false);
     }
 }
