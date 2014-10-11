@@ -12,12 +12,15 @@ public class Tile {
 	
     Image tile;
 	boolean wall = true;
-	static int size = 10;
-
+	static int size = 50;
 
 	public Tile(Image tile, boolean wall) {
         this.tile = tile;
         this.wall = wall;
+    }
+
+    public void render(Graphics graphics, float x, float y) {
+        graphics.drawImage(tile,x, y);
     }
     
     public Image getTile() {
@@ -27,8 +30,8 @@ public class Tile {
     public static int getSize() {
 		return size;
 	}
-
-    public void render(Graphics graphics, float x, float y) {
-        graphics.drawImage(tile,x, y);
-    }
+    
+	public static void setSize(int size) {
+		Tile.size = size;
+	}
 }

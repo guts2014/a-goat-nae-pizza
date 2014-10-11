@@ -1,6 +1,7 @@
 package com.agoatnaepizza;
 
 import org.newdawn.slick.*;
+import org.newdawn.slick.geom.Rectangle;
 
 import com.agoatnaepizza.Game.Map;
 import com.agoatnaepizza.Game.Objects.Tile;
@@ -13,6 +14,11 @@ import com.agoatnaepizza.Game.Tiles.Floor;
  */
 public class GameLoop implements Game {
 	Map map;
+	float scale = 1;
+	int width = 800;
+	int height = 600;
+	boolean toggled = false;
+	
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
     	Tile floor = new Floor();
@@ -23,11 +29,22 @@ public class GameLoop implements Game {
 
     @Override
     public void update(GameContainer gameContainer, int i) throws SlickException {
-
+    	Input input = gameContainer.getInput();
+    	
+    	if (input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON)) {
+    		if (!toggled) scale /= 1.2;
+    		toggled = true;
+    	} else if (input.isMouseButtonDown(Input.MOUSE_RIGHT_BUTTON)) {
+    		if (!toggled) scale *= 1.2;
+    		toggled = true;
+    	} else {
+    		toggled = false;
+    	}
     }
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
+    	graphics.scale(scale, scale);
         map.render(graphics);
     	graphics.drawString("", 10, 100);
     }
