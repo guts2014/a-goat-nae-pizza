@@ -12,7 +12,7 @@ import java.awt.*;
 public class TaskProvider extends Tile {
     TaskQueue taskQueue;
 
-    public TaskProvider(Image tile, TaskQueue queue) {
+    public TaskProvider(org.newdawn.slick.Image tile, TaskQueue queue) {
         super(tile, false);
         this.taskQueue = queue;
     }

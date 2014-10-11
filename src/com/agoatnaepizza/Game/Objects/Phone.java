@@ -1,6 +1,10 @@
 package com.agoatnaepizza.Game.Objects;
 
 import javax.imageio.ImageIO;
+
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -10,7 +14,7 @@ import java.io.IOException;
  * Time: 23:55
  */
 public class Phone extends TaskProvider {
-    public Phone() throws IOException {
-        super(ImageIO.read(new File("Resources/phone.bmp")), null); //TODO Implement me!!
+    public Phone() throws IOException, SlickException {
+        super(new Image("Resources/phone.bmp"), null); //TODO Implement me!!
     }
 }
