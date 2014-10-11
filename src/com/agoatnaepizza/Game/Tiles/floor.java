@@ -12,6 +12,6 @@ import org.newdawn.slick.SlickException;
 public class Floor extends Tile{
 
     public Floor() throws SlickException {
-        super(new Image("Resources/floor.png"), false);
+        super(new Image("Resources/Tile/floor.jpg"), false);
     }
 }
