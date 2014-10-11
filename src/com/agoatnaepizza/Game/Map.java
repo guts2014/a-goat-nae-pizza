@@ -1,6 +1,7 @@
 package com.agoatnaepizza.Game;
 
 import com.agoatnaepizza.Game.Objects.Staff;
+import com.agoatnaepizza.Game.Objects.TaskProvider;
 import com.agoatnaepizza.Game.Objects.Tile;
 import com.agoatnaepizza.IPredicate;
 import org.newdawn.slick.Graphics;
@@ -9,6 +10,7 @@ import org.newdawn.slick.util.pathfinding.PathFindingContext;
 import org.newdawn.slick.util.pathfinding.TileBasedMap;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -23,11 +25,18 @@ public class Map implements TileBasedMap {
     List<List<Tile>> floor;
     List<List<List<Tile>>> objects;
     List<List<Staff>> staff;
+    java.util.Map<Tile, TaskProvider> taskProviders;
+
+    public final int x, y;
 
 	public Map(final int width, final int height, Tile defaultFloor, Tile defaultWall) {
         this.floor = new ArrayList<>(width);
         this.objects = new ArrayList<>(width);
         this.staff = new ArrayList<>(width);
+        this.taskProviders = new HashMap<>();
+
+        x = width;
+        y = height;
 
         for (int i = 0; i < width; i++) {
             List<Tile> floor = new ArrayList<>(height);
@@ -53,6 +62,17 @@ public class Map implements TileBasedMap {
         for (int i = 0; i < height; i++) {
             this.floor.get(i).set(0, defaultWall);
             this.floor.get(i).set(this.floor.get(i).size() - 1, defaultWall);
+        }
+    }
+
+    public void Tick() {
+        for (int i = 0; i < floor.size(); i++) {
+            for (int j = 0; j < floor.get(i).size(); j++) {
+
+                if (staff.get(i).get(j) != null) {
+                    staff.get(i).get(j).tick(this);
+                }
+            }
         }
     }
 
@@ -84,9 +104,16 @@ public class Map implements TileBasedMap {
                 for (Tile tile: objects.get(i).get(j)) {
                     graphics.drawImage(tile.getTile(), i*size, j*size);
                 }
+            }
+        }
+
+        for (int i = 0; i < floor.size(); i++) {
+            for (int j = 0; j < floor.get(i).size(); j++) {
 
                 if (staff.get(i).get(j) != null) {
-                    graphics.drawImage(staff.get(i).get(j).getTile().getTile(), i * size, j * size);
+                    Staff staffmember = staff.get(i).get(j);
+                    graphics.drawImage(staffmember.getTile().getTile(), i * size, j * size);
+                    graphics.drawString(staffmember.getState().toString(), i * size, j * size);
                 }
             }
         }

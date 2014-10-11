@@ -11,11 +11,10 @@ import com.agoatnaepizza.Game.Tasks.TaskQueue;
  */
 public class Phone extends TaskProvider {
 
-    static TaskQueue taskQueue;
+    public static TaskQueue taskQueue = new TaskQueue();
 
     public Phone() {
         super(ImageOrDefault.load("Resources/Phone/phone50.png")); //TODO Implement me!!
-        taskQueue = new TaskQueue();
     }
 
 
@@ -32,5 +31,10 @@ public class Phone extends TaskProvider {
     @Override
     public boolean hasTask() {
         return taskQueue.hasTask();
+    }
+
+    @Override
+    public int waiting() {
+        return taskQueue.waiting();
     }
 }

@@ -31,4 +31,9 @@ public class Computer extends TaskProvider {
     public boolean hasTask() {
         return taskQueue.hasTask();
     }
+
+    @Override
+    public int waiting() {
+        return taskQueue.waiting();
+    }
 }

@@ -18,7 +18,9 @@ public class UIPanel extends JPanel {
     JComboBox<Object> buildables;
     InteractionModel model;
     DesignGridLayout layout;
-    JToggleButton placeStaff;
+
+    ButtonGroup group = new ButtonGroup();
+    JRadioButton None = new JRadioButton("None"), Object = new JRadioButton("Objects"), Staff = new JRadioButton("Staff");
 
     /**
      * Creates a new <code>JPanel</code> with a double buffer
@@ -27,18 +29,38 @@ public class UIPanel extends JPanel {
      */
     public UIPanel(InteractionModel model) {
         this.model = model;
-        this.placeStaff = new JToggleButton("Place Player");
         this.layout = new DesignGridLayout(this);
+
+        group.add(None);
+        group.add(Object);
+        group.add(Staff);
     }
 
     public void populate() {
 
         this.buildables = new JComboBox<>(Buildable.getNames().toArray());
 
-        placeStaff.addActionListener(new ActionListener() {
+        None.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                model.setPlaceStaff(placeStaff.isEnabled());
+                model.setPlaceStaff(false);
+                model.setPlaceObject(false);
+            }
+        });
+
+        Object.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.setPlaceStaff(false);
+                model.setPlaceObject(true);
+            }
+        });
+
+        Staff.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.setPlaceStaff(true);
+                model.setPlaceObject(false);
             }
         });
 
@@ -57,8 +79,12 @@ public class UIPanel extends JPanel {
             }
         });
 
+        None.setSelected(true);
+
         layout.row().grid().add(buildables);
-        layout.row().grid().add(placeStaff);
+        layout.row().grid().add(None);
+        layout.row().grid().add(Object);
+        layout.row().grid().add(Staff);
     }
 
 }

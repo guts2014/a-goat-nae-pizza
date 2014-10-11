@@ -18,4 +18,5 @@ public abstract class TaskProvider extends Tile {
     public abstract void setTaskQueue(TaskQueue queue);
     public abstract Customer getTask();
     public abstract boolean hasTask();
+    public abstract int waiting();
 }

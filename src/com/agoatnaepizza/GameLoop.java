@@ -1,8 +1,10 @@
 package com.agoatnaepizza;
 
 import com.agoatnaepizza.Game.Buildable;
+import com.agoatnaepizza.Game.Company;
 import com.agoatnaepizza.Game.InteractionModel;
 import com.agoatnaepizza.Game.Map;
+import com.agoatnaepizza.Game.Objects.Phone;
 import com.agoatnaepizza.Game.Objects.Staff;
 import com.agoatnaepizza.Game.Objects.Tile;
 import com.agoatnaepizza.Game.Tasks.TaskQueue;
@@ -14,7 +16,8 @@ import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import java.util.List;
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 /**
  * User: nishad
@@ -48,6 +51,8 @@ public class GameLoop extends BasicGameState {
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         Tile floor = new Floor();
         Tile wall = new Wall();
+
+        Phone.taskQueue = PhoneQueue;
 
         map = new Map(10, 10, floor, wall);
         
@@ -84,12 +89,13 @@ public class GameLoop extends BasicGameState {
     	if (input.isKeyDown(Input.KEY_UP)) 
     		keyDownY -= 1;
     
-    	int x = (int) Math.floor(Math.floor((input.getMouseX() / scale - keyDownX)) / Tile.getSize());
-		int y = (int) Math.floor(Math.floor((input.getMouseY() / scale - keyDownY)) / Tile.getSize());
+    	int x = max(min((int) Math.floor(Math.floor((input.getMouseX() / scale - keyDownX)) / Tile.getSize()), map.x - 2), 1);
+		int y = max(min((int) Math.floor(Math.floor((input.getMouseY() / scale - keyDownY)) / Tile.getSize()), map.x - 2), 1);
     	if (input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON)) {
             if (model.getPlaceStaff()) {
                 map.setStaff(x, y, new Staff("BOB", new Vector2f(x, y)));
-            } else {
+            }
+            if (model.getPlaceObject()) {
                 map.getObjects().get(x).get(y).add(model.getSelectedBuildable());
             }
     	}
@@ -97,16 +103,18 @@ public class GameLoop extends BasicGameState {
     	if (input.isMouseButtonDown(Input.MOUSE_RIGHT_BUTTON)) {
     		if (model.getPlaceStaff()) {
                 map.setStaff(x, y, null);
-            } else {
-                List<Tile> objects = map.getObjects().get(x).get(y);
-                for (Tile t : objects) {
-                    objects.remove(t);
-                }
+            }
+            if (model.getPlaceObject()) {
+                map.getObjects().get(x).get(y).clear();
             }
     	}
     	
     	mouseX = x;
     	mouseY = y;
+
+        PhoneQueue.tick();
+        emailQueue.tick();
+        map.Tick();
     }
 
     @Override
@@ -121,6 +129,8 @@ public class GameLoop extends BasicGameState {
         );
         graphics.drawString("", 10, 100);
     	
-    	
+    	graphics.drawString("Emails: "+emailQueue.waiting()+" Phone Calls: "+PhoneQueue.waiting(), 50, 400);
+        graphics.drawString("Reputation: "+Company.company.getReputation(), 50, 350);
+        graphics.drawString("Money: "+ Company.company.getMoney(), 60, 50);
     }
 }

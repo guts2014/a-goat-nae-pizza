@@ -11,6 +11,7 @@ public class Company {
 
     int Money = 1000;
     int rent = 1;
+    int reputation = 0;
 
     void tick() {
         Money -= rent;
@@ -22,5 +23,13 @@ public class Company {
 
     public int getMoney() {
         return this.Money;
+    }
+
+    public int getReputation() {
+        return reputation;
+    }
+
+    public void adjustReputation(int amount) {
+        reputation += amount;
     }
 }

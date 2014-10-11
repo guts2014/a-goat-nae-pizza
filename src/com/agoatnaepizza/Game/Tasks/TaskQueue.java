@@ -1,10 +1,13 @@
 package com.agoatnaepizza.Game.Tasks;
 
+import com.agoatnaepizza.Game.Company;
 import com.agoatnaepizza.Game.Tasks.Customer.CustomerType;
 
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
+
+import static java.lang.Math.max;
 
 /**
  * User: nishad
@@ -24,7 +27,7 @@ public class TaskQueue {
 	public static Customer getRandomCustomer(){
 		//generating random customer
 		int pick = new Random().nextInt(CustomerType.values().length);
-	    CustomerType cusT= CustomerType.values()[pick];
+	    CustomerType cusT = CustomerType.values()[pick];
 
 	    //Random randVal=
 	    //creating a customer with random values 
@@ -34,14 +37,14 @@ public class TaskQueue {
         return new Customer(
             cusT,
             new Random().nextBoolean(),
-            new Random().nextInt(95)+5,
-            new Random().nextInt(95)+5, null
+            new Random().nextInt(1000)+5,
+            new Random().nextInt(100)+5, null
         );
 	}
 
     public void tick() {
         Random r = new Random();
-        if (r.nextInt(10) > 8) {
+        if (r.nextFloat() * Math.log(max(4, Company.company.getReputation())) >= 1.0 && queue.size() < 100) {
             queue.add(getRandomCustomer());
         }
 
@@ -54,4 +57,7 @@ public class TaskQueue {
         return queue.element();
     }
     public boolean hasTask() {return !queue.isEmpty();}
+    public int waiting() {
+        return queue.size();
+    }
 }
