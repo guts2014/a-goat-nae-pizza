@@ -8,7 +8,7 @@ import org.newdawn.slick.Image;
  * Date: 10/10/14
  * Time: 23:22
  */
-public class Tile {
+public class Tile{
 	
     Image tile;
 	boolean wall = true;
