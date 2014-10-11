@@ -20,7 +20,7 @@ public class GameLoop implements Game {
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
-        graphics.drawString("Howdy!", 10, 10);
+        graphics.drawString("", 10, 10);
     }
 
     @Override

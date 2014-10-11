@@ -5,6 +5,8 @@ import com.agoatnaepizza.Game.Objects.Tile;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.newdawn.slick.Graphics;
+
 /**
  * User: nishad
  * Date: 10/10/14
@@ -36,5 +38,25 @@ public class Map {
             this.floor.get(i).set(0, defaultWall);
             this.floor.get(i).set(this.floor.get(i).size() - 1, defaultWall);
         }
+    }
+    
+    public void render(Graphics graphics) {
+    	
+    	int size = Tile.getSize();
+    	
+    	//render floor
+    	for (int i = 0; 0 < floor.size(); i++) {
+            for (int j = 0; j < floor.get(i).size(); j++) {
+                graphics.drawImage(floor.get(i).get(j).getTile(), i*size, j*size);
+            }
+        }
+    	
+    	//render objects
+    	for (int i = 0; 0 < objects.size(); i++) {
+            for (int j = 0; j < objects.get(i).size(); j++) {
+                graphics.drawImage(objects.get(i).get(j).getTile(), i*size, j*size);
+            }
+        }
+    	
     }
 }

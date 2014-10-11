@@ -8,11 +8,22 @@ import org.newdawn.slick.Image;
  * Time: 23:22
  */
 public class Tile {
+	
     Image tile;
-    boolean wall = true;
+	boolean wall = true;
+	static int size = 10;
 
-    public Tile(Image tile, boolean wall) {
+
+	public Tile(Image tile, boolean wall) {
         this.tile = tile;
         this.wall = wall;
     }
+    
+    public Image getTile() {
+		return tile;
+	}
+
+    public static int getSize() {
+		return size;
+	}
 }
