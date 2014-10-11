@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class Phone extends TaskProvider {
     public Phone() throws IOException, SlickException {
-        super(new Image("Resources/phone.bmp")); //TODO Implement me!!
+        super(new Image("Resources/phone.bmp")); 
     }
 
 
