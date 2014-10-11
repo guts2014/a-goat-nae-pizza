@@ -11,4 +11,4 @@ public class SocialMediaCustomer extends Customer {
     public SocialMediaCustomer(boolean angry, int money, int patience, int percentageComplete, Image icon) {
         super(angry, money, patience, percentageComplete, icon);
     }
-i}
+}
