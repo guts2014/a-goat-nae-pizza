@@ -1,13 +1,9 @@
 package com.agoatnaepizza;
 
-import org.newdawn.slick.*;
-
 import com.agoatnaepizza.Game.Map;
-import com.agoatnaepizza.Game.Objects.Tile;
-import com.agoatnaepizza.Game.Tiles.Floor;
-import com.agoatnaepizza.Game.Tiles.Wall;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -32,7 +28,12 @@ public class GameLoop extends BasicGameState {
     }
 
     @Override
-    public void update(GameContainer gameContainer, int i) throws SlickException {
+    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
+
+    }
+
+    @Override
+    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
     	Input input = gameContainer.getInput();
     	
     	if (input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON)) {
@@ -60,7 +61,7 @@ public class GameLoop extends BasicGameState {
     }
 
     @Override
-    public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
+    public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
     	graphics.translate(keyDownX, keyDownY);
     
     	graphics.scale(scale, scale);
@@ -68,10 +69,5 @@ public class GameLoop extends BasicGameState {
     	graphics.drawString("", 10, 100);
     	
     	
-    }
-
-    @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
-
     }
 }
