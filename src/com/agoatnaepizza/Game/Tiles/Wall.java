@@ -10,6 +10,6 @@ import com.agoatnaepizza.Game.Objects.Tile;
  */
 public class Wall extends Tile {
     public Wall() {
-        super(ImageOrDefault.load("Resources/wall/wall_paper.png"), true);
+        super(ImageOrDefault.load("Resources/wall/wall_paper2.png"), true);
     }
 }
