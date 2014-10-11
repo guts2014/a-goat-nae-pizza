@@ -19,8 +19,6 @@ import org.newdawn.slick.state.StateBasedGame;
 public class GameLoop extends BasicGameState {
 	Map map;
 	float scale = 1;
-	int width = 800;
-	int height = 600;
 	boolean toggled = false;
 	private int keyDownX;
 	private int keyDownY;
