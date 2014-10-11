@@ -13,19 +13,23 @@ import java.util.List;
  */
 public class Map {
     List<List<Tile>> floor;
-    List<List<Tile>> objects;
+    List<List<List<Tile>>> objects;
 
     public Map(final int width, final int height, Tile defaultFloor, Tile defaultWall) {
         this.floor = new ArrayList<>(width);
         this.objects = new ArrayList<>(width);
 
         for (int i = 0; i < width; i++) {
-            List<Tile> floor = new ArrayList<Tile>(height);
+            List<Tile> floor = new ArrayList<>(height);
+            List<List<Tile>> objects = new ArrayList<>(height);
+
             for (int j = 0; j < height; j++) {
                 floor.add(defaultFloor);
+                objects.add(new ArrayList<Tile>(1));
             }
+
             this.floor.add(floor);
-            objects.add(new ArrayList<Tile>(height));
+            this.objects.add(objects);
         }
 
         for (int i = 0; i < width; i++) {
@@ -47,7 +51,10 @@ public class Map {
     	for (int i = 0; i < floor.size(); i++) {
             for (int j = 0; j < floor.get(i).size(); j++) {
                 graphics.drawImage(floor.get(i).get(j).getTile(), i*size, j*size);
-                graphics.drawImage(objects.get(i).get(j).getTile(), i*size, j*size);
+
+                for (Tile tile: objects.get(i).get(j)) {
+                    graphics.drawImage(tile.getTile(), i*size, j*size);
+                }
             }
         }
     }
