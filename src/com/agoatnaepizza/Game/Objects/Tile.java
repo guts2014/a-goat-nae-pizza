@@ -1,5 +1,6 @@
 package com.agoatnaepizza.Game.Objects;
 
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
 /**
@@ -26,4 +27,8 @@ public class Tile {
     public static int getSize() {
 		return size;
 	}
+
+    public void render(Graphics graphics, float x, float y) {
+        graphics.drawImage(tile,x, y);
+    }
 }
