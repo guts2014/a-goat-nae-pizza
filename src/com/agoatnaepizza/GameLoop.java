@@ -1,6 +1,9 @@
 package com.agoatnaepizza;
 
 import com.agoatnaepizza.Game.Map;
+import com.agoatnaepizza.Game.Objects.Tile;
+import com.agoatnaepizza.Game.Tiles.Floor;
+import com.agoatnaepizza.Game.Tiles.Wall;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -29,7 +32,10 @@ public class GameLoop extends BasicGameState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
+        Tile floor = new Floor();
+        Tile wall = new Wall();
 
+        map = new Map(10, 10, floor, wall);
     }
 
     @Override
