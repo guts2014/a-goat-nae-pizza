@@ -15,5 +15,5 @@ public class Phone extends TaskProvider {
         super(new Image("Resources/phone.bmp"), null); //TODO Implement me!!
     }
 
-    
+
 }

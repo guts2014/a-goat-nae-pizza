@@ -1,11 +1,10 @@
 package com.agoatnaepizza.Game;
 
 import com.agoatnaepizza.Game.Objects.Tile;
+import org.newdawn.slick.Graphics;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.newdawn.slick.Graphics;
 
 /**
  * User: nishad
@@ -20,7 +19,7 @@ public class Map {
         this.floor = new ArrayList<>(width);
         this.objects = new ArrayList<>(width);
 
-        for (int i = 0; 0 < width; i++) {
+        for (int i = 0; i < width; i++) {
             List<Tile> floor = new ArrayList<Tile>(height);
             for (int j = 0; j < height; j++) {
                 floor.add(defaultFloor);
@@ -45,18 +44,11 @@ public class Map {
     	int size = Tile.getSize();
     	
     	//render floor
-    	for (int i = 0; 0 < floor.size(); i++) {
+    	for (int i = 0; i < floor.size(); i++) {
             for (int j = 0; j < floor.get(i).size(); j++) {
                 graphics.drawImage(floor.get(i).get(j).getTile(), i*size, j*size);
-            }
-        }
-    	
-    	//render objects
-    	for (int i = 0; 0 < objects.size(); i++) {
-            for (int j = 0; j < objects.get(i).size(); j++) {
                 graphics.drawImage(objects.get(i).get(j).getTile(), i*size, j*size);
             }
         }
-    	
     }
 }
