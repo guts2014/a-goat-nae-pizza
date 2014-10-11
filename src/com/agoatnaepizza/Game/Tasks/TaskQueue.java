@@ -34,6 +34,7 @@ public class TaskQueue {
 		//generating random customer
 		int pick = new Random().nextInt(CustomerType.values().length);
 	    CustomerType cusT= CustomerType.values()[pick];
+	    //Random randVal=
 	    //creating a customer with random values 
 	    //money range=5-100
 	    //patience range=5-100
@@ -41,7 +42,6 @@ public class TaskQueue {
 				new Random().nextInt(95)+5, null);
 		
 		if(newCustomer.isAngry()) newCustomer.setPatience(0);
-		
 		
 		return newCustomer;
 		
