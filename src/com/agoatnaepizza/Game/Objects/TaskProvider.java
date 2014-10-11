@@ -2,6 +2,7 @@ package com.agoatnaepizza.Game.Objects;
 
 import com.agoatnaepizza.Game.Tasks.Customer;
 import com.agoatnaepizza.Game.Tasks.TaskQueue;
+import org.newdawn.slick.Image;
 
 /**
  * User: nishad
@@ -11,7 +12,7 @@ import com.agoatnaepizza.Game.Tasks.TaskQueue;
 public class TaskProvider extends Tile { 
 	static TaskQueue taskQueue;
 
-    public TaskProvider(org.newdawn.slick.Image tile) {
+    public TaskProvider(Image tile) {
         super(tile, false);
         taskQueue = new TaskQueue();
     }

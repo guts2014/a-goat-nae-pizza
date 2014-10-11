@@ -1,8 +1,7 @@
 package com.agoatnaepizza.Game.Tiles;
 
+import com.agoatnaepizza.Game.ImageOrDefault;
 import com.agoatnaepizza.Game.Objects.Tile;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 
 /**
  * User: nishad
@@ -11,7 +10,7 @@ import org.newdawn.slick.SlickException;
  */
 public class Floor extends Tile{
 
-    public Floor() throws SlickException {
-        super(new Image("Resources/Tile/floor50.jpg"), false);
+    public Floor() {
+        super(ImageOrDefault.load("Resources/Tile/floor50.jpg"), false);
     }
 }

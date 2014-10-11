@@ -1,9 +1,6 @@
 package com.agoatnaepizza.Game.Objects;
 
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
-
-import java.io.IOException;
+import com.agoatnaepizza.Game.ImageOrDefault;
 
 /**
  * User: nishad
@@ -11,8 +8,8 @@ import java.io.IOException;
  * Time: 23:55
  */
 public class Phone extends TaskProvider {
-    public Phone() throws IOException, SlickException {
-        super(new Image("Resources/phone.bmp")); //TODO Implement me!!
+    public Phone() {
+        super(ImageOrDefault.load("Resources/phone.bmp")); //TODO Implement me!!
     }
 
 

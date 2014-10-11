@@ -1,5 +1,6 @@
 package com.agoatnaepizza;
 
+import com.agoatnaepizza.Game.InteractionModel;
 import org.newdawn.slick.CanvasGameContainer;
 import org.newdawn.slick.SlickException;
 
@@ -33,8 +34,10 @@ public class MainView extends JFrame {
     public MainView(String title) throws HeadlessException {
         super(title);
 
+        InteractionModel model = new InteractionModel();
+
         JPanel game = new JPanel();
-        JPanel UI = new JPanel();
+        JPanel UI = new UIPanel(model);
 
         setSize(1000, 600);
         game.setSize(getWidth() - 200, getHeight());
@@ -50,7 +53,7 @@ public class MainView extends JFrame {
         add(game);
 
         try {
-            gc = new CanvasGameContainer(new MainState("Root"));
+            gc = new CanvasGameContainer(new MainState("Root", model));
             game.add(gc);
 
             gc.setSize(getWidth() - 200, getHeight());

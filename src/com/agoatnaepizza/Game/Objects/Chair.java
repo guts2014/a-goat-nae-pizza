@@ -1,12 +1,6 @@
 package com.agoatnaepizza.Game.Objects;
 
-import javax.imageio.ImageIO;
-
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
-
-import java.io.File;
-import java.io.IOException;
+import com.agoatnaepizza.Game.ImageOrDefault;
 
 /**
  * User: nishad
@@ -14,7 +8,12 @@ import java.io.IOException;
  * Time: 00:03
  */
 public class Chair extends Tile {
-    public Chair() throws IOException, SlickException {
-        super(new Image("resources/chair.bmp"), false);
+
+    static {
+
+    }
+
+    public Chair() {
+        super(ImageOrDefault.load("resources/chair.bmp"), false);
     }
 }

@@ -1,5 +1,6 @@
 package com.agoatnaepizza;
 
+import com.agoatnaepizza.Game.InteractionModel;
 import com.agoatnaepizza.Game.Map;
 import com.agoatnaepizza.Game.Objects.Tile;
 import com.agoatnaepizza.Game.Tiles.Floor;
@@ -22,7 +23,14 @@ public class GameLoop extends BasicGameState {
 	boolean toggled = false;
 	private int keyDownX;
 	private int keyDownY;
-	
+    InteractionModel model;
+
+
+    public GameLoop(InteractionModel model) {
+        super();
+        this.model = model;
+    }
+
     @Override
     public int getID() {
         return 1;
