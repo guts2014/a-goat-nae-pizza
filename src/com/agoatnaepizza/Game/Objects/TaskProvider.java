@@ -1,8 +1,7 @@
 package com.agoatnaepizza.Game.Objects;
 
+import com.agoatnaepizza.Game.Tasks.Customer;
 import com.agoatnaepizza.Game.Tasks.TaskQueue;
-
-import java.awt.*;
 
 /**
  * User: nishad
@@ -12,9 +11,13 @@ import java.awt.*;
 public class TaskProvider extends Tile { 
 	static TaskQueue taskQueue;
 
-    public TaskProvider(org.newdawn.slick.Image tile, TaskQueue queue) {
+    public TaskProvider(org.newdawn.slick.Image tile) {
         super(tile, false);
-        this.taskQueue = queue;
+        taskQueue = new TaskQueue();
+    }
+
+    public Customer getTask() {
+        return taskQueue.getTask();
     }
    
 }
