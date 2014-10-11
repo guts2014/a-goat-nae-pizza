@@ -1,6 +1,8 @@
 package com.agoatnaepizza.Game.Tasks;
 
+import java.awt.Image;
 import java.util.ArrayDeque;
+import java.util.Random;
 
 import com.agoatnaepizza.Game.Tasks.Customer.CustomerType;
 
@@ -17,25 +19,33 @@ public class TaskQueue {
 	int calltime=15;
 	int emailtime=10;
 	int socialtime=5;
-	public TaskQueue(){
-		
+	public TaskQueue() throws InterruptedException{
+		Customer newCustomer=getRandomCustomer();
+		//get 1000 different customers
+		for(int i=0;i<=1000;i++){
+			if(newCustomer.getType()==CustomerType.call) callQue.add(newCustomer);
+			else if(newCustomer.getType()==CustomerType.email) callQue.add(newCustomer);
+			else if(newCustomer.getType()==CustomerType.soc) callQue.add(newCustomer);
+			newCustomer=getRandomCustomer();
+		}
 	}
 	
 	
-	//implement random customers
-	public Customer getRandomEmailCustomer(){
-		Customer newCustomer=new Customer(CustomerType.email, false, calltime, calltime, calltime, null);
-		return null;
+	//mplement random customers CustomerType type, boolean angry, int money, int patience, Image icon
+	
+	public Customer getRandomCustomer(){
+		//generating random customer
+		int pick = new Random().nextInt(CustomerType.values().length);
+	    CustomerType cusT= CustomerType.values()[pick];
+	    //creating a customer with random values 
+	    //money range=5-100
+	    //patience range=5-100
+		Customer newCustomer=new Customer(cusT, new Random().nextBoolean(), new Random().nextInt(95)+5,
+				new Random().nextInt(95)+5, null);
+		if(newCustomer.isAngry()) newCustomer.setPatience(0);
 		
-	}
-	public Customer getRandomCallCustomer(){
-		Customer newCustomer=new Customer(CustomerType.call, false, calltime, calltime, calltime, null);
-		return null;
 		
-	}
-	public Customer getRandomSocCustomer(){
-		Customer newCustomer=new Customer(CustomerType.soc, false, calltime, calltime, calltime, null);
-		return null;
+		return newCustomer;
 		
 	}
 }
