@@ -40,6 +40,6 @@ public class GameLoop extends BasicGameState {
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
 
-        
+
     }
 }
