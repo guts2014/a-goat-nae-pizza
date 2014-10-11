@@ -15,6 +15,8 @@ public class Staff {
     private Integer Salary = 20;
     private Skills skill = new Skills();
     private Vector2f position;
+    private boolean available; 
+    private TaskProvider currentTask; 
 
     class Skills {
         Integer calls = 5;
@@ -25,10 +27,24 @@ public class Staff {
     public Staff(String name, Vector2f position) {
         Name = name;
         this.position = position;
+        this.available = true; 
     }
 
-
+    //provisional 
     public void tick(Map map) {
+    	if(available){ 
+    		currentTask = new TaskProvider(null, null) //change 
+    		int persentage = TaskProvider.taskQueue.deque().getPersentage();  //change 
+    		while(persentage < 100){
+    			if(persentage%10 == 0){ 
+    				if (Customer is angry){ 
+    					
+    				}
+    			}
+    		}
+    		
+    		
+    	}
 
     }
 }
