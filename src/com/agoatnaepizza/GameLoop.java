@@ -4,6 +4,7 @@ import com.agoatnaepizza.Game.Buildable;
 import com.agoatnaepizza.Game.InteractionModel;
 import com.agoatnaepizza.Game.Map;
 import com.agoatnaepizza.Game.Objects.Tile;
+import com.agoatnaepizza.Game.Tasks.TaskQueue;
 import com.agoatnaepizza.Game.Tiles.Floor;
 import com.agoatnaepizza.Game.Tiles.Wall;
 import org.lwjgl.input.Mouse;
@@ -29,6 +30,8 @@ public class GameLoop extends BasicGameState {
 	private int keyDownY;
     InteractionModel model;
 
+    TaskQueue PhoneQueue = new TaskQueue();
+    TaskQueue emailQueue = new TaskQueue();
 
     public GameLoop(InteractionModel model) {
         super();
@@ -94,7 +97,9 @@ public class GameLoop extends BasicGameState {
     		for (Tile t : objects)
     			objects.remove(t);
     	}
-    	
+
+
+
     }
 
     @Override

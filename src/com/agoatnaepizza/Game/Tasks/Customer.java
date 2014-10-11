@@ -39,10 +39,13 @@ public class Customer {
         this.waiting = false;
     }
 
-    public void tick() {
-        if (!waiting) {
-            this.patience -= this.angry ? 5 : 1;
-        }
+    public void tick(int EmployeeHappiness, int StaffExperience) {
+        this.patience -= (this.angry ? 5 : 1) * ((EmployeeHappiness > 50)? -1 : 1);
+        this.percentageComplete += StaffExperience / ((StaffExperience > 10)? 3 : 6);
+    }
+
+    public void waitingTick() {
+        this.patience -= 1;
     }
     
     //GETTERS AND SETTERS	

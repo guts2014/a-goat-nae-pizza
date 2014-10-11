@@ -1,9 +1,12 @@
 package com.agoatnaepizza.Game.Objects;
 
+import com.agoatnaepizza.Game.Company;
 import com.agoatnaepizza.Game.Map;
 import com.agoatnaepizza.Game.Tasks.Customer;
-import com.agoatnaepizza.Game.Tasks.TaskQueue;
 import org.newdawn.slick.geom.Vector2f;
+
+import java.util.List;
+import java.util.Random;
 
 /**
  * User: nishad
@@ -12,14 +15,15 @@ import org.newdawn.slick.geom.Vector2f;
  */
 public class Staff {
     private String Name;
-    private Integer Happiness = 50;
     private Integer Salary = 20;
     private Skills skill = new Skills();
     private Vector2f position;
     private int experience = 1; 
-    private boolean available; 
+    private States state;
     private Customer currentTask;
+    private State condition;
 
+    Random r = new Random();
 
     class Skills {
         Integer calls = 5;
@@ -27,30 +31,72 @@ public class Staff {
         Integer Emails = 5;
     }
 
+    class State {
+        Integer energy = 100;
+        Integer happiness = 100;
+    }
+
     public Staff(String name, Vector2f position) {
         Name = name;
         this.position = position;
-        this.available = true; 
+        this.state = States.LookingForWork;
+        this.condition = new State();
     }
 
     //provisional 
     public void tick(Map map) {
-    	if(available){
-    		currentTask = TaskQueue.getRandomCustomer(); //change
-    		int percentage = currentTask.getPercentageComplete();  //change
+        switch (state) {
+            case LookingForWork:
 
-    		while(percentage < 100){
-    			if(percentage % 10 == 0){
-    				if (currentTask.isAngry()){
-    					
-    				}
-    				//depending on type of task(phone,email,social) 
-    				percentage += 100/15;
-    			}
-    		}
-    		
-    		
-    	}
+                if (condition.energy <= 0) {
+                    state = States.Idle;
+                }
 
+                List<Tile> stack = map.getObjects().get((int) position.x).get((int) position.y);
+                for (Tile tile: stack) {
+                    if (tile instanceof Chair) {
+                        for (int i = -1; i <= 1; i++) {
+                            for (int j = -1; j <= 1; j++ ){
+                                for (Tile adjacent: map.getObjects().get(i).get(j)) {
+                                    if (adjacent instanceof TaskProvider) {
+                                        TaskProvider provider = (TaskProvider) adjacent;
+                                        if (provider.hasTask()) {
+                                            currentTask = provider.getTask();
+                                            state = States.handlingTask;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            case Idle:
+                condition.energy += 5;
+
+                if (condition.energy >= 100) {
+                    state = States.LookingForWork;
+                }
+            case Moving:
+                break;
+            case Sitting:
+                break;
+            case handlingTask:
+                currentTask.tick(condition.happiness, experience);
+                experience += (r.nextInt(10) > 7)? 1:0;
+
+                if (currentTask.getPercentageComplete() >= 100) {
+                    if (currentTask.getPatience() > 0) {
+                        Company.company.addMoney(currentTask.getMoney());
+                    }
+                    state = States.LookingForWork;
+                }
+        }
+
+    }
+
+    public enum States {
+        handlingTask, Moving, Sitting, Idle, LookingForWork
     }
 }

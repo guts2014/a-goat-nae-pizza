@@ -46,11 +46,12 @@ public class TaskQueue {
         }
 
         for (Customer c: queue) {
-            c.tick();
+            c.waitingTick();
         }
     }
 
     public Customer getTask() {
         return queue.element();
     }
+    public boolean hasTask() {return !queue.isEmpty();}
 }

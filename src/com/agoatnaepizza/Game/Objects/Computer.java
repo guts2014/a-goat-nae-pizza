@@ -6,18 +6,16 @@ import com.agoatnaepizza.Game.Tasks.TaskQueue;
 
 /**
  * User: nishad
- * Date: 10/10/14
- * Time: 23:55
+ * Date: 11/10/14
+ * Time: 18:09
  */
-public class Phone extends TaskProvider {
-
+public class Computer extends TaskProvider {
     static TaskQueue taskQueue;
 
-    public Phone() {
-        super(ImageOrDefault.load("Resources/phone.bmp")); //TODO Implement me!!
+    public Computer() {
+        super(ImageOrDefault.load("Resources/Computer/Computer.bmp"));
         taskQueue = new TaskQueue();
     }
-
 
     @Override
     public void setTaskQueue(TaskQueue queue) {
@@ -27,10 +25,5 @@ public class Phone extends TaskProvider {
     @Override
     public Customer getTask() {
         return taskQueue.getTask();
-    }
-
-    @Override
-    public boolean hasTask() {
-        return taskQueue.hasTask();
     }
 }

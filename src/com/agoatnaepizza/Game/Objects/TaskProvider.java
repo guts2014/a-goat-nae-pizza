@@ -9,16 +9,13 @@ import org.newdawn.slick.Image;
  * Date: 10/10/14
  * Time: 23:52
  */
-public class TaskProvider extends Tile { 
-	static TaskQueue taskQueue;
+public abstract class TaskProvider extends Tile {
 
     public TaskProvider(Image tile) {
         super(tile, false);
-        taskQueue = new TaskQueue();
     }
 
-    public Customer getTask() {
-        return taskQueue.getTask();
-    }
-   
+    public abstract void setTaskQueue(TaskQueue queue);
+    public abstract Customer getTask();
+    public abstract boolean hasTask();
 }

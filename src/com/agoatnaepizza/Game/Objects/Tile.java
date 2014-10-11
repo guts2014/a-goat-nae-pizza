@@ -11,7 +11,7 @@ import org.newdawn.slick.Image;
 public class Tile{
 	
     Image tile;
-	boolean wall = true;
+	public final boolean wall;
 	static int size = 50;
 
 	public Tile(Image tile, boolean wall) {

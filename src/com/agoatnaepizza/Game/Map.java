@@ -1,17 +1,24 @@
 package com.agoatnaepizza.Game;
 
 import com.agoatnaepizza.Game.Objects.Tile;
+import com.agoatnaepizza.IPredicate;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.geom.Vector2f;
+import org.newdawn.slick.util.pathfinding.PathFindingContext;
+import org.newdawn.slick.util.pathfinding.TileBasedMap;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
+
+import static java.lang.Math.sqrt;
 
 /**
  * User: nishad
  * Date: 10/10/14
  * Time: 23:46
  */
-public class Map {
+public class Map implements TileBasedMap {
     List<List<Tile>> floor;
     List<List<List<Tile>>> objects;
 
@@ -43,7 +50,23 @@ public class Map {
             this.floor.get(i).set(this.floor.get(i).size() - 1, defaultWall);
         }
     }
-    
+
+    public PriorityQueue<Vector2f> findAllInstancesOf(IPredicate predicate) {
+        PriorityQueue<Tile> out = new PriorityQueue<>();
+
+        for (int i = 0; i < objects.size(); i++) {
+            for (int j = 0; j < objects.get(i).size(); j++) {
+                for (Tile tile: objects.get(i).get(j)) {
+                    if (predicate.apply(tile)) {
+                        out.add(tile);
+                    }
+                }
+            }
+        }
+
+        return null; //TODO implement if needed.
+    }
+
     public void render(Graphics graphics) {
     	
     	int size = Tile.getSize();
@@ -63,5 +86,29 @@ public class Map {
 	public List<List<List<Tile>>> getObjects() {
 		return objects;
 	}
-    
+
+    @Override
+    public int getWidthInTiles() {
+        return floor.size();
+    }
+
+    @Override
+    public int getHeightInTiles() {
+        return floor.get(0).size();
+    }
+
+    @Override
+    public void pathFinderVisited(int i, int i2) {
+
+    }
+
+    @Override
+    public boolean blocked(PathFindingContext pathFindingContext, int i, int i2) {
+        return floor.get(i).get(i2).wall;
+    }
+
+    @Override
+    public float getCost(PathFindingContext pathFindingContext, int i, int i2) {
+        return (float) sqrt(i * i + i2 * i2);
+    }
 }
