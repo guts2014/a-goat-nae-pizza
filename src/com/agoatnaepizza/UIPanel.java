@@ -1,8 +1,11 @@
 package com.agoatnaepizza;
 
+import com.agoatnaepizza.Game.Buildable;
 import com.agoatnaepizza.Game.InteractionModel;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * User: nishad
@@ -19,8 +22,27 @@ public class UIPanel extends JPanel {
      * @param model
      */
     public UIPanel(InteractionModel model) {
-        buildables = new JComboBox<>();
         this.model = model;
+    }
+
+    public void populate() {
+
+        this.buildables = new JComboBox<>(Buildable.getNames().toArray());
+
+        buildables.addActionListener(new ActionListener() {
+            /**
+             * Invoked when an action occurs.
+             *
+             * @param e
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Object o = buildables.getSelectedItem();
+                if (o instanceof String) {
+                    model.setSelectedBuildable(Buildable.getBuildables().get((String) o));
+                }
+            }
+        });
 
         this.add(buildables);
     }

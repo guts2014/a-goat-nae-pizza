@@ -37,7 +37,7 @@ public class MainView extends JFrame {
         InteractionModel model = new InteractionModel();
 
         JPanel game = new JPanel();
-        JPanel UI = new UIPanel(model);
+        UIPanel UI = new UIPanel(model);
 
         this.setLayout(new FlowLayout());
 
@@ -65,6 +65,8 @@ public class MainView extends JFrame {
             gc.setVisible(true);
 
             add(UI);
+
+            UI.populate();
 
             gc.start();
         } catch (SlickException e) {

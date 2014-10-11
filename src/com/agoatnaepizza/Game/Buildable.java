@@ -16,16 +16,32 @@ import java.util.*;
  */
 public class Buildable {
 
-    public static final List<String> names = new ArrayList<String>() {{
-        add("wall"); add("floor"); add("table"); add("phone"); add("chair"); // This is to work around an initialisation error.
-    }};
+    public static List<String> names = null;
+    public static java.util.Map<String, Tile> buildables = null;
 
-    public static final java.util.Map<String, Tile> buildables = new HashMap<String, Tile>() {{
-        put("wall", new Wall());
-        put("floor", new Floor());
-        put("table", new Table());
-        put("phone", new Phone());
-        put("chair", new Chair());
-        System.out.println("Initialised!");
-    }};
+    public static List<String> getNames() {
+        if (names == null) {
+            names = new ArrayList<String>();
+            names.add("wall");
+            names.add("floor");
+            names.add("table");
+            names.add("phone");
+            names.add("chair"); // This is to work around an initialisation error.
+        }
+        return names;
+    }
+
+    public static java.util.Map<String, Tile> getBuildables() {
+        if (buildables == null) {
+            buildables = new HashMap<String, Tile>();
+            buildables.put("wall", new Wall());
+            buildables.put("floor", new Floor());
+            buildables.put("table", new Table());
+            buildables.put("phone", new Phone());
+            buildables.put("chair", new Chair());
+            System.out.println("Initialised!");
+        }
+        return buildables;
+    }
+
 }

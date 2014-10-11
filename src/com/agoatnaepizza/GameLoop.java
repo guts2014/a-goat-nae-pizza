@@ -1,5 +1,6 @@
 package com.agoatnaepizza;
 
+import com.agoatnaepizza.Game.Buildable;
 import com.agoatnaepizza.Game.InteractionModel;
 import com.agoatnaepizza.Game.Map;
 import com.agoatnaepizza.Game.Objects.Tile;
@@ -50,7 +51,12 @@ public class GameLoop extends BasicGameState {
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
-    	Input input = gameContainer.getInput();
+
+        if (model.getSelectedBuildable() == null) {
+            model.setSelectedBuildable(Buildable.getBuildables().get(Buildable.getNames().get(0)));
+        }
+
+        Input input = gameContainer.getInput();
     	int WheelDelta = Mouse.getDWheel();
     	if (WheelDelta > 0) {
     		if (!toggled) scale /= 1.2;
@@ -77,7 +83,7 @@ public class GameLoop extends BasicGameState {
     	if (input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON)) {
     		int x = (int) Math.floor((input.getMouseX() / scale - keyDownX) / Tile.getSize());
     		int y = (int) Math.floor((input.getMouseY() / scale - keyDownY) / Tile.getSize());
-    		map.getObjects().get(x).get(y).add(new Wall());
+    		map.getObjects().get(x).get(y).add(model.getSelectedBuildable());
     	}
     	
     	if (input.isMouseButtonDown(Input.MOUSE_RIGHT_BUTTON)) {
