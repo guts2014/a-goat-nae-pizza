@@ -3,6 +3,7 @@ package com.agoatnaepizza.Game.Tasks;
 import com.agoatnaepizza.Game.Company;
 import com.agoatnaepizza.Game.Tasks.Customer.CustomerType;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
@@ -14,8 +15,10 @@ import static java.lang.Math.max;
  * Date: 10/10/14
  * Time: 23:53
  */
-public class TaskQueue {	
+public class TaskQueue implements Iterable<Customer> {
 	private Queue<Customer> queue;
+
+    private int totalHandled = 0;
 
 	public TaskQueue() {
         this.queue = new LinkedList<>();
@@ -38,7 +41,9 @@ public class TaskQueue {
             cusT,
             new Random().nextBoolean(),
             new Random().nextInt(100)+5,
-            new Random().nextInt(100)+5, null
+            new Random().nextInt(100)+5,
+            new Random().nextInt(500) + 50,
+            null
         );
 	}
 
@@ -54,6 +59,7 @@ public class TaskQueue {
     }
 
     public Customer getTask() {
+        totalHandled += 1;
         return queue.element();
     }
 
@@ -63,5 +69,23 @@ public class TaskQueue {
 
     public int waiting() {
         return queue.size();
+    }
+
+    public int getWaitingCount() {
+        return queue.size();
+    }
+
+    public int getTotalHandeled() {
+        return totalHandled;
+    }
+
+    /**
+     * Returns an iterator over a set of elements of type T.
+     *
+     * @return an Iterator.
+     */
+    @Override
+    public Iterator<Customer> iterator() {
+        return queue.iterator();
     }
 }

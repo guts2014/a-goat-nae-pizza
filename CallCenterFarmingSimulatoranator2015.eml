@@ -21,6 +21,15 @@
 	<lib name="slick.jar" scope="COMPILE">
 		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/slick.jar!/"/>
 	</lib>
+	<lib name="designgridlayout-1.11-javadoc.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/designgridlayout-1.11-javadoc.jar!/"/>
+	</lib>
+	<lib name="designgridlayout-1.11-sources.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/designgridlayout-1.11-sources.jar!/"/>
+	</lib>
+	<lib name="designgridlayout-1.11.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/designgridlayout-1.11.jar!/"/>
+	</lib>
 	<levels>
 		<level name="org.lwjgl.lwjgl:lwjgl:2.9.1" value="project"/>
 		<level name="slick" value="project"/>

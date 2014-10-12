@@ -2,6 +2,8 @@ package com.agoatnaepizza.Game.Tasks;
 
 import java.awt.*;
 
+import static java.lang.Math.max;
+
 /**
  * User: nishad
  * Date: 10/10/14
@@ -15,7 +17,8 @@ public class Customer {
     int money = 5;
     int patience = 50;
 
-    int percentageComplete = 0;
+    int workDone = 0;
+    int workNeeded;
     Image icon;
 
     boolean waiting;
@@ -24,12 +27,12 @@ public class Customer {
         call, email, soc
     }
 
-    public Customer(CustomerType type, boolean angry, int money, int patience, Image icon) {
+    public Customer(CustomerType type, boolean angry, int money, int patience, int workNeeded, Image icon) {
         this.type = type;
         this.angry = angry;
         this.money = money;
         this.patience = patience;
-//        this.percentageComplete = percentageComplete;
+        this.workNeeded = workNeeded;
         this.icon = icon;
         this.waiting = true;
     }
@@ -41,7 +44,7 @@ public class Customer {
 
     public void tick(int EmployeeHappiness, int StaffExperience) {
         this.patience -= (this.angry ? 5 : 1) * ((EmployeeHappiness > 50)? -1 : 1);
-        this.percentageComplete += StaffExperience / ((StaffExperience > 10)? 3 : 6);
+        this.workDone += StaffExperience / ((StaffExperience > 10)? 3 : 6);
     }
 
     public void waitingTick() {
@@ -78,21 +81,29 @@ public class Customer {
 		return patience;
 	}
 
-	public void setPatience(int patience) {
-		this.patience = patience;
+	public void adjustPatience(int patience) {
+        this.patience = max(0, this.patience + patience);
 	}
 
-	public int getPercentageComplete() {
-		return percentageComplete;
+	public int getWorkDone() {
+		return workDone;
 	}
 
-	public void setPercentageComplete(int percentageComplete) {
-		this.percentageComplete = percentageComplete;
+	public void setWorkDone(int workDone) {
+		this.workDone = workDone;
 	}
 
+    public int getWorkNeeded() {
+        return workNeeded;
+    }
 
-    
-    
+    public void doWork(int workDone) {
+        this.workDone += workDone;
+    }
+
+    public boolean isDone() {
+        return workDone > workNeeded;
+    }
 }
 
 

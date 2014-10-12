@@ -1,5 +1,7 @@
 package com.agoatnaepizza.Game;
 
+import static java.lang.Math.max;
+
 /**
  * User: nishad
  * Date: 11/10/14
@@ -30,6 +32,6 @@ public class Company {
     }
 
     public void adjustReputation(int amount) {
-        reputation += amount;
+        reputation = max(-100, reputation + amount);
     }
 }

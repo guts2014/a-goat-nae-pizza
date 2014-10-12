@@ -9,8 +9,6 @@ import org.newdawn.slick.geom.Vector2f;
 import java.util.List;
 import java.util.Random;
 
-import static java.lang.Math.max;
-
 /**
  * User: nishad
  * Date: 10/10/14
@@ -56,9 +54,11 @@ public class Staff {
                 experience += (r.nextInt(10) > 7)? 1:0;
                 condition.energy -= 1;
 
-                currentTask.setPercentageComplete(currentTask.getPercentageComplete() + 1);
+                currentTask.adjustPatience(-1);
 
-                if (currentTask.getPercentageComplete() >= 100) {
+                currentTask.doWork((int) (1 + Math.log10(experience)));
+
+                if (currentTask.isDone()) {
 
                     if (currentTask.getPatience() > 0) {
                         Company.company.addMoney(currentTask.getMoney());
@@ -73,15 +73,15 @@ public class Staff {
             case Sitting:
                 break;
             case Idle:
-                condition.energy += 5;
+                condition.energy += 1;
 
-                if (condition.energy >= 100) {
+                if (condition.energy >= 300) {
                     state = States.LookingForWork;
                 }
             case LookingForWork:
             case waitingForWork:
 
-                if (condition.energy <= 0) {
+                if (condition.energy <= 50) {
                     state = States.Idle;
                 }
 
