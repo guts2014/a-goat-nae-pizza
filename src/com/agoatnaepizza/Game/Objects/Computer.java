@@ -10,10 +10,10 @@ import com.agoatnaepizza.Game.Tasks.TaskQueue;
  * Time: 18:09
  */
 public class Computer extends TaskProvider {
-    static TaskQueue taskQueue;
+    public static TaskQueue taskQueue;
 
     public Computer() {
-        super(ImageOrDefault.load("Resources/Computer/Computer.bmp"));
+        super(ImageOrDefault.load("Resources/Computer/Computer.png"));
         taskQueue = new TaskQueue();
     }
 

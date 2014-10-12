@@ -1,9 +1,6 @@
 package com.agoatnaepizza.Game;
 
-import com.agoatnaepizza.Game.Objects.Chair;
-import com.agoatnaepizza.Game.Objects.Phone;
-import com.agoatnaepizza.Game.Objects.Table;
-import com.agoatnaepizza.Game.Objects.Tile;
+import com.agoatnaepizza.Game.Objects.*;
 import com.agoatnaepizza.Game.Tiles.Floor;
 import com.agoatnaepizza.Game.Tiles.Wall;
 
@@ -26,7 +23,8 @@ public class Buildable {
             names.add("Floor");
             names.add("Table");
             names.add("Phone");
-            names.add("Chair"); // This is to work around an initialisation error.
+            names.add("Chair");
+            names.add("Computer");
         }
         return names;
     }
@@ -39,6 +37,7 @@ public class Buildable {
             buildables.put("Table", new Table());
             buildables.put("Phone", new Phone());
             buildables.put("Chair", new Chair());
+            buildables.put("Computer", new Computer());
             System.out.println("Initialised!");
         }
         return buildables;

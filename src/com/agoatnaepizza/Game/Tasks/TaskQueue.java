@@ -37,14 +37,14 @@ public class TaskQueue {
         return new Customer(
             cusT,
             new Random().nextBoolean(),
-            new Random().nextInt(1000)+5,
+            new Random().nextInt(100)+5,
             new Random().nextInt(100)+5, null
         );
 	}
 
     public void tick() {
         Random r = new Random();
-        if (r.nextFloat() * Math.log(max(4, Company.company.getReputation())) >= 1.0 && queue.size() < 100) {
+        if (r.nextFloat() * Math.log10(max(10, Company.company.getReputation())) >= 0.99 && queue.size() < 100) {
             queue.add(getRandomCustomer());
         }
 
@@ -56,7 +56,11 @@ public class TaskQueue {
     public Customer getTask() {
         return queue.element();
     }
-    public boolean hasTask() {return !queue.isEmpty();}
+
+    public boolean hasTask() {
+        return !queue.isEmpty();
+    }
+
     public int waiting() {
         return queue.size();
     }
