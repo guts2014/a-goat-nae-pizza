@@ -1,4 +1,4 @@
-package com.agoatnaepizza;
+package com.agoatnaepizza.Game.Utilities;
 
 /**
  * User: nishad

@@ -60,7 +60,7 @@ public class TaskQueue implements Iterable<Customer> {
 
     public Customer getTask() {
         totalHandled += 1;
-        return queue.element();
+        return queue.remove();
     }
 
     public boolean hasTask() {

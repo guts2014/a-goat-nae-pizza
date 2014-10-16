@@ -1,4 +1,4 @@
-package com.agoatnaepizza.Game;
+package com.agoatnaepizza.Game.GameUI;
 
 import com.agoatnaepizza.Game.Tasks.Customer;
 import com.agoatnaepizza.Game.Tasks.TaskQueue;

@@ -1,6 +1,5 @@
-package com.agoatnaepizza;
+package com.agoatnaepizza.Game.NonGameUI;
 
-import com.agoatnaepizza.Game.Buildable;
 import com.agoatnaepizza.Game.InteractionModel;
 import net.java.dev.designgridlayout.DesignGridLayout;
 

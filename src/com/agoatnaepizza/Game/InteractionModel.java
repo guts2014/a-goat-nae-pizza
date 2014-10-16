@@ -1,6 +1,6 @@
 package com.agoatnaepizza.Game;
 
-import com.agoatnaepizza.Game.Objects.Tile;
+import com.agoatnaepizza.Game.Tiles.Tile;
 
 /**
  * User: nishad

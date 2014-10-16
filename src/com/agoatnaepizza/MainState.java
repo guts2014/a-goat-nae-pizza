@@ -1,5 +1,6 @@
 package com.agoatnaepizza;
 
+import com.agoatnaepizza.Game.GameUI.GameLoop;
 import com.agoatnaepizza.Game.InteractionModel;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;

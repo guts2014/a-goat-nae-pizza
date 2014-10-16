@@ -1,5 +1,6 @@
-package com.agoatnaepizza.Game;
+package com.agoatnaepizza.Game.Utilities;
 
+import com.agoatnaepizza.Game.maps.Map;
 import org.newdawn.slick.geom.Path;
 import org.newdawn.slick.geom.Vector2f;
 

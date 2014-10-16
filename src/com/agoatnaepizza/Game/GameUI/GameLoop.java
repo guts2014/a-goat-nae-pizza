@@ -1,14 +1,17 @@
-package com.agoatnaepizza;
+package com.agoatnaepizza.Game.GameUI;
 
 import com.agoatnaepizza.Game.*;
-import com.agoatnaepizza.Game.Objects.Computer;
-import com.agoatnaepizza.Game.Objects.Phone;
-import com.agoatnaepizza.Game.Objects.Staff;
-import com.agoatnaepizza.Game.Objects.Tile;
+import com.agoatnaepizza.Game.NonGameUI.Buildable;
+import com.agoatnaepizza.Game.Tiles.Objects.Computer;
+import com.agoatnaepizza.Game.Tiles.Objects.Phone;
+import com.agoatnaepizza.Game.Entities.Staff;
+import com.agoatnaepizza.Game.Tiles.Tile;
 import com.agoatnaepizza.Game.Tasks.TaskQueue;
 import com.agoatnaepizza.Game.Tiles.Floor;
+import com.agoatnaepizza.Game.Tiles.GroundTile;
 import com.agoatnaepizza.Game.Tiles.StaffTile;
 import com.agoatnaepizza.Game.Tiles.Wall;
+import com.agoatnaepizza.Game.maps.Map;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Vector2f;
@@ -36,7 +39,8 @@ public class GameLoop extends BasicGameState {
 	private int mouseY;
 
     private long lastTickTime = 0;
-    private static final Double TargetFrameTime = 1./30.*1000;
+    private static final int TargetFrameRate = 30;
+    private static final Double TargetFrameTime = 1./TargetFrameRate*1000;
 
     private TaskQueueRenderer taskQueueRenderer = new TaskQueueRenderer();
 
@@ -55,8 +59,8 @@ public class GameLoop extends BasicGameState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        Tile floor = new Floor();
-        Tile wall = new Wall();
+        GroundTile floor = new Floor();
+        GroundTile wall = new Wall();
 
         Phone.taskQueue = PhoneQueue;
         Computer.taskQueue = emailQueue;
@@ -64,26 +68,27 @@ public class GameLoop extends BasicGameState {
         taskQueueRenderer.addTasks("Phone", PhoneQueue);
         taskQueueRenderer.addTasks("Email", emailQueue);
 
-        map = new Map(10, 10, floor, wall);
+        map = new Map(25, 25, floor, wall);
         
     }
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
 
+
         long time = Calendar.getInstance().getTimeInMillis();
         if (time - lastTickTime < TargetFrameTime) {
             return;
         } else {
+            HandleInput(gameContainer);
+
             System.out.println("FrameTime: "+(time-lastTickTime)+"ms Target: "+TargetFrameTime+"ms");
             lastTickTime = time;
+
+            PhoneQueue.tick();
+            emailQueue.tick();
+            map.Tick();
         }
-
-        HandleInput(gameContainer);
-
-        PhoneQueue.tick();
-        emailQueue.tick();
-        map.Tick();
     }
 
     private void HandleInput(GameContainer gameContainer) {
@@ -103,17 +108,23 @@ public class GameLoop extends BasicGameState {
             toggled = false;
         }
 
+        @SuppressWarnings("PointlessArithmeticExpression")
+        final int offset = 1 * (600/TargetFrameRate);
         if (input.isKeyDown(Input.KEY_LEFT)) {
-            keyDownX -= 1;
+            keyDownX -= offset;
         }
-        if (input.isKeyDown(Input.KEY_DOWN))
-            keyDownY += 1;
 
-        if (input.isKeyDown(Input.KEY_RIGHT))
-            keyDownX += 1;
+        if (input.isKeyDown(Input.KEY_DOWN)) {
+            keyDownY += offset;
+        }
 
-        if (input.isKeyDown(Input.KEY_UP))
-            keyDownY -= 1;
+        if (input.isKeyDown(Input.KEY_RIGHT)) {
+            keyDownX += offset;
+        }
+
+        if (input.isKeyDown(Input.KEY_UP)) {
+            keyDownY -= offset;
+        }
 
         int x = max(min((int) Math.floor(Math.floor((input.getMouseX() / scale - keyDownX)) / Tile.getSize()), map.x - 2), 1);
         int y = max(min((int) Math.floor(Math.floor((input.getMouseY() / scale - keyDownY)) / Tile.getSize()), map.x - 2), 1);
@@ -122,7 +133,7 @@ public class GameLoop extends BasicGameState {
                 map.setStaff(x, y, new Staff("BOB", new Vector2f(x, y)));
             }
             if (model.getPlaceObject()) {
-                map.getObjects().get(x).get(y).add(model.getSelectedBuildable());
+                map.getObjects(x, y).add(model.getSelectedBuildable());
             }
         }
 
@@ -131,7 +142,7 @@ public class GameLoop extends BasicGameState {
                 map.setStaff(x, y, null);
             }
             if (model.getPlaceObject()) {
-                map.getObjects().get(x).get(y).clear();
+                map.getObjects(x, y).clear();
             }
         }
 

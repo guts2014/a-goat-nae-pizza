@@ -1,8 +1,8 @@
-package com.agoatnaepizza.Game.Objects;
+package com.agoatnaepizza.Game.Tiles.Objects;
 
 import com.agoatnaepizza.Game.Tasks.Customer;
 import com.agoatnaepizza.Game.Tasks.TaskQueue;
-import org.newdawn.slick.Image;
+import com.agoatnaepizza.Game.Tiles.Tile;
 
 /**
  * User: nishad
@@ -11,7 +11,7 @@ import org.newdawn.slick.Image;
  */
 public abstract class TaskProvider extends Tile {
 
-    public TaskProvider(Image tile) {
+    public TaskProvider(String tile) {
         super(tile, false);
     }
 

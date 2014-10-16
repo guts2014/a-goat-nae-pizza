@@ -1,7 +1,8 @@
-package com.agoatnaepizza.Game;
+package com.agoatnaepizza.Game.NonGameUI;
 
-import com.agoatnaepizza.Game.Objects.*;
+import com.agoatnaepizza.Game.Tiles.Objects.*;
 import com.agoatnaepizza.Game.Tiles.Floor;
+import com.agoatnaepizza.Game.Tiles.Tile;
 import com.agoatnaepizza.Game.Tiles.Wall;
 
 import java.util.*;

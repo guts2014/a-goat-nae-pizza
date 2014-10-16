@@ -1,4 +1,4 @@
-package com.agoatnaepizza.Game;
+package com.agoatnaepizza.Game.Utilities;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;

@@ -1,5 +1,7 @@
-package com.agoatnaepizza.Game.Objects;
+package com.agoatnaepizza.Game.Tiles.Objects;
 
+
+import com.agoatnaepizza.Game.Tiles.Tile;
 
 import java.util.ArrayList;
 import java.util.List;

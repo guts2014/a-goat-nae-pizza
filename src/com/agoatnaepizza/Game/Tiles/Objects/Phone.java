@@ -1,6 +1,5 @@
-package com.agoatnaepizza.Game.Objects;
+package com.agoatnaepizza.Game.Tiles.Objects;
 
-import com.agoatnaepizza.Game.ImageOrDefault;
 import com.agoatnaepizza.Game.Tasks.Customer;
 import com.agoatnaepizza.Game.Tasks.TaskQueue;
 
@@ -14,7 +13,7 @@ public class Phone extends TaskProvider {
     public static TaskQueue taskQueue = new TaskQueue();
 
     public Phone() {
-        super(ImageOrDefault.load("Resources/Phone/phone50.png")); //TODO Implement me!!
+        super("Resources/Phone/phone50.png"); //TODO Implement me!!
     }
 
 

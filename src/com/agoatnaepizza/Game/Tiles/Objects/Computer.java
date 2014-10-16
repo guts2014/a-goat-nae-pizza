@@ -1,6 +1,5 @@
-package com.agoatnaepizza.Game.Objects;
+package com.agoatnaepizza.Game.Tiles.Objects;
 
-import com.agoatnaepizza.Game.ImageOrDefault;
 import com.agoatnaepizza.Game.Tasks.Customer;
 import com.agoatnaepizza.Game.Tasks.TaskQueue;
 
@@ -10,11 +9,11 @@ import com.agoatnaepizza.Game.Tasks.TaskQueue;
  * Time: 18:09
  */
 public class Computer extends TaskProvider {
+
     public static TaskQueue taskQueue;
 
     public Computer() {
-        super(ImageOrDefault.load("Resources/Computer/Computer.png"));
-        taskQueue = new TaskQueue();
+        super("Resources/Computer/Computer.png");
     }
 
     @Override
